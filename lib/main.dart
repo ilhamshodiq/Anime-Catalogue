@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_prak_uas_anime_catalogue/views/homescreen.dart';
+import 'package:mobile_prak_uas_anime_catalogue/views/login_page.dart';
+import 'dart:io';
+
+class PostHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}
 
 void main() {
+  HttpOverrides.global = new PostHttpOverrides();
   runApp(const MyApp());
 }
 
@@ -16,10 +28,10 @@ class MyApp extends StatelessWidget {
       title: 'UAS Prak Mobile',
       theme: ThemeData(
           appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.black,
-        foregroundColor: Colors.white,
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
       )),
-      home: HomeScreenPage(),
+      home: LoginPage(),
     );
   }
 }
