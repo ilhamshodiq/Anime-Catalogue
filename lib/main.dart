@@ -3,6 +3,8 @@ import 'package:mobile_prak_uas_anime_catalogue/views/homescreen.dart';
 import 'package:mobile_prak_uas_anime_catalogue/views/login_page.dart';
 import 'dart:io';
 
+import 'package:mobile_prak_uas_anime_catalogue/views/splashscreen.dart';
+
 class PostHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(context) {
@@ -14,12 +16,10 @@ class PostHttpOverrides extends HttpOverrides {
 
 void main() {
   HttpOverrides.global = new PostHttpOverrides();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -27,11 +27,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'UAS Prak Mobile',
       theme: ThemeData(
+          fontFamily: 'montserrat',
           appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-      )),
-      home: LoginPage(),
+            backgroundColor: Color.fromRGBO(129, 59, 231, 1),
+            foregroundColor: Colors.white,
+          )),
+      home: SplashScreenPage(),
     );
   }
 }

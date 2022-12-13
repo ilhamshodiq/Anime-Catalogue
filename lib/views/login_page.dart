@@ -13,11 +13,12 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController controllerEmail = TextEditingController();
   TextEditingController controllerPass = TextEditingController();
 
+  final _formKey = GlobalKey<FormState>();
   User? model;
 
   void login(String email, password) async {
     try {
-      var response = await Dio().get('http://10.0.2.2:3000/user');
+      var response = await Dio().get('http://10.0.2.2:3000/users');
 
       var panjang_data = response.data.length;
       if (response.statusCode == 200) {
@@ -35,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
           }
         }
       } else {
-        final snackBar = SnackBar(
+        final snackBar = const SnackBar(
           backgroundColor: Colors.redAccent,
           content: Text(
             'Login failed',
@@ -52,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
         backgroundColor: Colors.redAccent,
         content: Text(
           e.toString(),
-          style: TextStyle(
+          style: const TextStyle(
             fontFamily: 'Poppins-Regular',
             color: Colors.white,
           ),
@@ -66,126 +67,131 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 23),
-        child: Column(
-          children: <Widget>[
-            Align(
-              alignment: Alignment.topLeft,
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    "Irasshaimase!",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Poppins SemiBold',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24,
-                    ),
-                  ),
-                  SizedBox(height: 3),
-                  Text("Login to yout account",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 17,
-                        fontFamily: 'Poppins Light',
-                      )),
-                ],
-              ),
-            ),
-            const SizedBox(height: 25),
-            TextField(
-              controller: controllerEmail,
-              style: const TextStyle(
-                fontFamily: 'Poppins Light',
-                fontSize: 16,
-              ),
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                labelText: "Email Address",
-                hintText: "Email Address",
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
-                hintStyle: const TextStyle(
-                  fontFamily: 'Poppins Light',
-                  fontSize: 16,
-                ),
-              ),
-            ),
-            const SizedBox(height: 18),
-            TextField(
-              controller: controllerPass,
-              style: const TextStyle(
-                fontFamily: 'Poppins Light',
-                fontSize: 16,
-              ),
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                labelText: "Password",
-                hintText: "Password",
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
-                hintStyle: const TextStyle(
-                  fontFamily: 'Poppins Light',
-                  fontSize: 16,
-                ),
-              ),
-            ),
-            const SizedBox(height: 15),
-            const Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                "Forgot password?",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                  fontFamily: 'Poppins Light',
-                ),
-              ),
-            ),
-            const Spacer(),
-            ElevatedButton(
-              onPressed: () {
-                login(controllerEmail.text, controllerPass.text);
-              },
-              child: const Text("SIGN IN",
-                  style: TextStyle(
-                    fontFamily: 'Poppins SemiBold',
-                    fontSize: 18,
-                  )),
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.black,
-                  minimumSize: const Size.fromHeight(55),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  )),
-            ),
-            const SizedBox(height: 10),
-            Row(
+        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 60),
+        child: Center(
+          child: Form(
+            key: _formKey,
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("Don't have an account?",
+                const Text(
+                  "Irasshaimase!",
+                  style: TextStyle(
+                    fontSize: 40,
+                    color: Color.fromRGBO(129, 59, 231, 1),
+                  ),
+                ),
+                const SizedBox(height: 4),
+                const Text("Login to your account..",
                     style: TextStyle(
-                      fontFamily: 'Poppins Light',
+                      color: Color.fromRGBO(129, 59, 231, 1),
                       fontSize: 16,
-                      color: Colors.black,
                     )),
-                const SizedBox(width: 7),
-                GestureDetector(
-                  onTap: () {},
-                  child: const Text("Sign up",
+                const SizedBox(height: 25),
+                TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "* Required";
+                    } else
+                      return null;
+                  },
+                  controller: controllerEmail,
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
+                  decoration: const InputDecoration(
+                    labelText: "Email Address",
+                    hintText: "Email Address",
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                    hintStyle: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 18),
+                TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "* Required";
+                    } else
+                      return null;
+                  },
+                  obscureText: true,
+                  controller: controllerPass,
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
+                  decoration: const InputDecoration(
+                    labelText: "Password",
+                    hintText: "Password",
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                    hintStyle: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                const Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Forgot password?",
+                    style: TextStyle(
+                      color: Color.fromRGBO(129, 59, 231, 1),
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      // If the form is valid, display a snackbar. In the real world,
+                      // you'd often call a server or save the information in a database.
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Processing Data')),
+                      );
+                    }
+                    login(controllerEmail.text, controllerPass.text);
+                  },
+                  child: const Text("SIGN IN",
                       style: TextStyle(
-                        fontFamily: 'Poppins Light',
-                        fontSize: 16,
-                        color: Colors.black,
+                        fontFamily: 'Poppins SemiBold',
+                        fontSize: 18,
                       )),
+                  style: ElevatedButton.styleFrom(
+                      primary: const Color.fromRGBO(129, 59, 231, 1),
+                      minimumSize: const Size.fromHeight(55),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      )),
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Don't have an account?",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Color.fromRGBO(129, 59, 231, 1),
+                        )),
+                    const SizedBox(width: 7),
+                    GestureDetector(
+                      onTap: () {},
+                      child: const Text("Sign up",
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Color.fromRGBO(129, 59, 231, 1),
+                          )),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );
