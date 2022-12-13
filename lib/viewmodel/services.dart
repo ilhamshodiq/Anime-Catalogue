@@ -39,3 +39,4 @@ Future<MangaDetailData> getMangaById(String id) async {
       ModelMangaDetail.fromJson(response.data as Map<String, dynamic>);
   return dataModel.data;
 }
+

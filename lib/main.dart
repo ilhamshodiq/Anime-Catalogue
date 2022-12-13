@@ -27,12 +27,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'UAS Prak Mobile',
       theme: ThemeData(
-          fontFamily: 'montserrat',
+          fontFamily: 'Poppins-Regular',
           appBarTheme: const AppBarTheme(
             backgroundColor: Color.fromRGBO(129, 59, 231, 1),
             foregroundColor: Colors.white,
           )),
-      home: SplashScreenPage(),
+      home: const SplashScreenPage(),
     );
   }
 }

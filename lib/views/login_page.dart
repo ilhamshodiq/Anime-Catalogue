@@ -30,7 +30,9 @@ class _LoginPageState extends State<LoginPage> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => HomeScreenPage(
-                          nama: response.data[i]['name'],
+                          name: response.data[i]['name'],
+                          email: response.data[i]['email'],
+                          image: response.data[i]['image'],
                         )));
             break;
           }
