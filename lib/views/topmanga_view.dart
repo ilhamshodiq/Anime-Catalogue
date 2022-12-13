@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_prak_uas_anime_catalogue/controller/topmanga_controller.dart';
 import 'package:mobile_prak_uas_anime_catalogue/models/model_manga.dart';
+import 'package:mobile_prak_uas_anime_catalogue/viewmodel/services.dart';
+import 'package:mobile_prak_uas_anime_catalogue/views/detail_topanime.dart';
+import 'package:mobile_prak_uas_anime_catalogue/views/detail_topmanga.dart';
 
 class TopManga extends StatefulWidget {
   const TopManga({super.key});
@@ -38,7 +40,16 @@ class _TopMangaState extends State<TopManga> {
                         final String gambar = data[index].images.toString();
                         final String sinopsis = data[index].synopsis.toString();
                         return InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DetailTopMangaScreenPage(
+                                  id: data[index].malId.toString(),
+                                ),
+                              ),
+                            );
+                          },
                           child: Container(
                             margin: const EdgeInsets.all(16),
                             decoration: const BoxDecoration(
@@ -56,7 +67,7 @@ class _TopMangaState extends State<TopManga> {
                               ],
                             ),
                             child: Row(
-                              children: <Widget>[
+                              children: [
                                 Padding(
                                     padding: const EdgeInsets.all(10.0),
                                     child: Container(
@@ -93,7 +104,7 @@ class _TopMangaState extends State<TopManga> {
                                       ),
                                       Row(
                                         children: [
-                                          const Icon(Icons.tv, size: 20),
+                                          const Icon(Icons.book, size: 20),
                                           const SizedBox(width: 2),
                                           Text(
                                             data[index].type,
@@ -114,9 +125,11 @@ class _TopMangaState extends State<TopManga> {
                                                 const TextStyle(fontSize: 14),
                                           ),
                                           const SizedBox(width: 10),
-                                          const Icon(
-                                            Icons.calendar_month_outlined,
-                                            size: 20,
+                                          const Text(
+                                            'Volume :',
+                                            style: const TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold),
                                           ),
                                           const SizedBox(width: 2),
                                           Text(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_prak_uas_anime_catalogue/controller/topanime_controller.dart';
+import 'package:mobile_prak_uas_anime_catalogue/viewmodel/services.dart';
 import 'package:mobile_prak_uas_anime_catalogue/models/model_anime.dart';
+import 'package:mobile_prak_uas_anime_catalogue/views/detail_topanime.dart';
 
 class TopAnime extends StatefulWidget {
   const TopAnime({super.key});
@@ -38,7 +39,15 @@ class _TopAnimeState extends State<TopAnime> {
                         final String gambar = data[index].images.toString();
                         final String sinopsis = data[index].synopsis.toString();
                         return InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            //navigate ke detail_topanime
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        DetailTopAnimeScreenPage(
+                                            id: data[index].malId.toString())));
+                          },
                           child: Container(
                             margin: const EdgeInsets.all(16),
                             decoration: const BoxDecoration(
@@ -56,7 +65,7 @@ class _TopAnimeState extends State<TopAnime> {
                               ],
                             ),
                             child: Row(
-                              children: <Widget>[
+                              children: [
                                 Padding(
                                     padding: const EdgeInsets.all(10.0),
                                     child: Container(

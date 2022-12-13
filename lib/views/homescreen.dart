@@ -34,7 +34,7 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
               ],
             ),
             bottom: PreferredSize(
-              preferredSize: Size.fromHeight(kToolbarHeight * 1.6), //,
+              preferredSize: Size.fromHeight(kToolbarHeight * 1.6),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -42,7 +42,7 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                   Padding(
                     padding: const EdgeInsets.only(left: 16, bottom: 12),
                     child: Text(
-                      'Yokoso !, ${widget.nama}',
+                      'Yokoso!!, ${widget.nama}',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w400,

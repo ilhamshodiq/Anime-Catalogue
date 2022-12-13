@@ -1,30 +1,31 @@
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
-ModelManga modelMangaFromJson(String str) =>
-    ModelManga.fromJson(json.decode(str));
+ModelMangaDetail modelMangaDetailFromJson(String str) =>
+    ModelMangaDetail.fromJson(json.decode(str));
 
-String modelMangaToJson(ModelManga data) => json.encode(data.toJson());
+String modelMangaDetailToJson(ModelMangaDetail data) =>
+    json.encode(data.toJson());
 
-class ModelManga {
-  ModelManga({
+class ModelMangaDetail {
+  ModelMangaDetail({
     required this.data,
   });
 
-  final List<TopMangaData> data;
+  final MangaDetailData data;
 
-  factory ModelManga.fromJson(Map<String, dynamic> json) => ModelManga(
-        data: List<TopMangaData>.from(
-            json["data"].map((x) => TopMangaData.fromJson(x))),
+  factory ModelMangaDetail.fromJson(Map<String, dynamic> json) =>
+      ModelMangaDetail(
+        data: MangaDetailData.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "data": List<dynamic>.from(data.map((x) => x.toJson())),
+        "data": data.toJson(),
       };
 }
 
-class TopMangaData {
-  TopMangaData({
+class MangaDetailData {
+  MangaDetailData({
     required this.malId,
     required this.url,
     required this.images,
@@ -54,7 +55,8 @@ class TopMangaData {
   final String rank;
   final String synopsis;
 
-  factory TopMangaData.fromJson(Map<String, dynamic> json) => TopMangaData(
+  factory MangaDetailData.fromJson(Map<String, dynamic> json) =>
+      MangaDetailData(
         malId: json["mal_id"],
         url: json["url"],
         images: json["images"]["jpg"]["image_url"],
