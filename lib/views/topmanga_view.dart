@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_prak_uas_anime_catalogue/controller/topanime_controller.dart';
-import 'package:mobile_prak_uas_anime_catalogue/models/model_anime.dart';
+import 'package:mobile_prak_uas_anime_catalogue/controller/topmanga_controller.dart';
+import 'package:mobile_prak_uas_anime_catalogue/models/model_manga.dart';
 
-class TopAnime extends StatefulWidget {
-  const TopAnime({super.key});
+class TopManga extends StatefulWidget {
+  const TopManga({super.key});
 
   @override
-  State<TopAnime> createState() => _TopAnimeState();
+  State<TopManga> createState() => _TopMangaState();
 }
 
-class _TopAnimeState extends State<TopAnime> {
-  List<TopAnimeData> data = [];
+class _TopMangaState extends State<TopManga> {
+  List<TopMangaData> data = [];
   bool isLoading = false;
 
   @override
   void initState() {
     super.initState();
     isLoading = true;
-    getTopAnime().then((value) {
+    getTopManga().then((value) {
       data = value;
       isLoading = false;
       setState(() {});
@@ -120,9 +120,7 @@ class _TopAnimeState extends State<TopAnime> {
                                           ),
                                           const SizedBox(width: 2),
                                           Text(
-                                            data[index].season != 'null'
-                                                ? data[index].season
-                                                : 'N/A',
+                                            data[index].chapters,
                                             style:
                                                 const TextStyle(fontSize: 14),
                                           ),

@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:mobile_prak_uas_anime_catalogue/models/model_anime.dart';
 import 'package:mobile_prak_uas_anime_catalogue/models/model_user.dart';
 import 'package:mobile_prak_uas_anime_catalogue/views/topanime_view.dart';
+import 'package:mobile_prak_uas_anime_catalogue/views/topmanga_view.dart';
 
 class HomeScreenPage extends StatefulWidget {
   String nama;
@@ -41,7 +42,7 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                   Padding(
                     padding: const EdgeInsets.only(left: 16, bottom: 12),
                     child: Text(
-                      'Yokoso!, ${widget.nama}',
+                      'Yokoso !, ${widget.nama}',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w400,
@@ -70,9 +71,7 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
         body: TabBarView(
           children: [
             TopAnime(),
-            Center(
-              child: Text("Manga Page"),
-            ),
+            TopManga(),
           ],
         ),
       ),

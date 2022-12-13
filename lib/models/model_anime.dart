@@ -11,10 +11,11 @@ class ModelAnime {
     required this.data,
   });
 
-  final List<Datum> data;
+  final List<TopAnimeData> data;
 
   factory ModelAnime.fromJson(Map<String, dynamic> json) => ModelAnime(
-        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+        data: List<TopAnimeData>.from(
+            json["data"].map((x) => TopAnimeData.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -22,8 +23,8 @@ class ModelAnime {
       };
 }
 
-class Datum {
-  Datum({
+class TopAnimeData {
+  TopAnimeData({
     required this.malId,
     required this.url,
     required this.images,
@@ -53,7 +54,7 @@ class Datum {
   final String season;
   final String year;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory TopAnimeData.fromJson(Map<String, dynamic> json) => TopAnimeData(
         malId: json["mal_id"].toString(),
         url: json["url"],
         images: json["images"]["jpg"]["image_url"],

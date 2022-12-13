@@ -35,6 +35,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
               colors: [
                 Colors.purple,
                 Colors.blue,
+                Colors.pink,
               ],
               textStyle: TextStyle(
                 fontSize: 36,

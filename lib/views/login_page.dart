@@ -36,30 +36,10 @@ class _LoginPageState extends State<LoginPage> {
           }
         }
       } else {
-        final snackBar = const SnackBar(
-          backgroundColor: Colors.redAccent,
-          content: Text(
-            'Login failed',
-            style: TextStyle(
-              fontFamily: 'Poppins-Regular',
-              color: Colors.white,
-            ),
-          ),
-        );
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        print("Login failed");
       }
     } catch (e) {
-      final snackBar = SnackBar(
-        backgroundColor: Colors.redAccent,
-        content: Text(
-          e.toString(),
-          style: const TextStyle(
-            fontFamily: 'Poppins-Regular',
-            color: Colors.white,
-          ),
-        ),
-      );
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      print(e);
     }
   }
 
