@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_prak_uas_anime_catalogue/views/login_page.dart';
+import 'package:anime_catalogue/views/login_page.dart';
 
 class IniDrawer extends StatefulWidget {
   final String name;

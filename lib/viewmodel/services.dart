@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:mobile_prak_uas_anime_catalogue/models/model_anime.dart';
-import 'package:mobile_prak_uas_anime_catalogue/models/model_animedetail.dart';
-import 'package:mobile_prak_uas_anime_catalogue/models/model_manga.dart';
-import 'package:mobile_prak_uas_anime_catalogue/models/model_mangadetail.dart';
+import 'package:anime_catalogue/models/model_anime.dart';
+import 'package:anime_catalogue/models/model_animedetail.dart';
+import 'package:anime_catalogue/models/model_manga.dart';
+import 'package:anime_catalogue/models/model_mangadetail.dart';
 
 final String dataUrlAnime = 'https://api.jikan.moe/v4/top/anime';
 final String dataUrlAnimeDariId = 'https://api.jikan.moe/v4/anime/';

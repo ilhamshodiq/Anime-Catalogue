@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:mobile_prak_uas_anime_catalogue/models/model_user.dart';
-import 'package:mobile_prak_uas_anime_catalogue/views/homescreen.dart';
+import 'package:anime_catalogue/models/model_user.dart';
+import 'package:anime_catalogue/views/homescreen.dart';
 
 class LoginPage extends StatefulWidget {
   @override

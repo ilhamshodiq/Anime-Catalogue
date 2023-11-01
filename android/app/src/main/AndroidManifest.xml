@@ -1,7 +1,6 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mobile_prak_uas_anime_catalogue">
-   <application
-        android:label="mobile_prak_uas_anime_catalogue"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
+        android:label="anime_catalogue"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

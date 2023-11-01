@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_prak_uas_anime_catalogue/models/model_animedetail.dart';
-import 'package:mobile_prak_uas_anime_catalogue/viewmodel/services.dart';
+import 'package:anime_catalogue/models/model_animedetail.dart';
+import 'package:anime_catalogue/viewmodel/services.dart';
 
 class DetailTopAnimeScreenPage extends StatefulWidget {
   //key untuk anime by id

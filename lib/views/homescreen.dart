@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:mobile_prak_uas_anime_catalogue/models/model_anime.dart';
-import 'package:mobile_prak_uas_anime_catalogue/models/model_user.dart';
-import 'package:mobile_prak_uas_anime_catalogue/views/inidrawer.dart';
-import 'package:mobile_prak_uas_anime_catalogue/views/login_page.dart';
-import 'package:mobile_prak_uas_anime_catalogue/views/topanime_view.dart';
-import 'package:mobile_prak_uas_anime_catalogue/views/topmanga_view.dart';
+import 'package:anime_catalogue/models/model_anime.dart';
+import 'package:anime_catalogue/models/model_user.dart';
+import 'package:anime_catalogue/views/inidrawer.dart';
+import 'package:anime_catalogue/views/login_page.dart';
+import 'package:anime_catalogue/views/topanime_view.dart';
+import 'package:anime_catalogue/views/topmanga_view.dart';
 
 class HomeScreenPage extends StatefulWidget {
   String name;

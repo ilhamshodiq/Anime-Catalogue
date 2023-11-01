@@ -1,4 +1,4 @@
-# mobile_prak_uas_anime_catalogue
+# anime_catalogue
 
 A new Flutter project.
 

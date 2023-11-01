@@ -1,6 +1,6 @@
 {
-    "name": "mobile_prak_uas_anime_catalogue",
-    "short_name": "mobile_prak_uas_anime_catalogue",
+    "name": "anime_catalogue",
+    "short_name": "anime_catalogue",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

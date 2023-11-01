@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_prak_uas_anime_catalogue/viewmodel/services.dart';
-import 'package:mobile_prak_uas_anime_catalogue/models/model_anime.dart';
-import 'package:mobile_prak_uas_anime_catalogue/views/detail_topanime.dart';
+import 'package:anime_catalogue/viewmodel/services.dart';
+import 'package:anime_catalogue/models/model_anime.dart';
+import 'package:anime_catalogue/views/detail_topanime.dart';
 
 class TopAnime extends StatefulWidget {
   const TopAnime({super.key});

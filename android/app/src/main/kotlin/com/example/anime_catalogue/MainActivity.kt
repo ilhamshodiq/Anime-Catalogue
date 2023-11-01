@@ -1,4 +1,4 @@
-package com.example.mobile_prak_uas_anime_catalogue
+package com.example.anime_catalogue
 
 import io.flutter.embedding.android.FlutterActivity
 

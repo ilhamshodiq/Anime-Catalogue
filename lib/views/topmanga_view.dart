@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_prak_uas_anime_catalogue/models/model_manga.dart';
-import 'package:mobile_prak_uas_anime_catalogue/viewmodel/services.dart';
-import 'package:mobile_prak_uas_anime_catalogue/views/detail_topanime.dart';
-import 'package:mobile_prak_uas_anime_catalogue/views/detail_topmanga.dart';
+import 'package:anime_catalogue/models/model_manga.dart';
+import 'package:anime_catalogue/viewmodel/services.dart';
+import 'package:anime_catalogue/views/detail_topanime.dart';
+import 'package:anime_catalogue/views/detail_topmanga.dart';
 
 class TopManga extends StatefulWidget {
   const TopManga({super.key});
