@@ -1,3 +1,4 @@
+import 'package:anime_catalogue/views/navpage.dart';
 import 'package:flutter/material.dart';
 import 'package:anime_catalogue/views/homescreen.dart';
 import 'dart:io';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
             backgroundColor: Color.fromRGBO(129, 59, 231, 1),
             foregroundColor: Colors.white,
           )),
-      home:  HomeScreenPage(email: 'ilhambheh@gmail.com', name: 'Ilham Shodiq', image: 'https://cdn.discordapp.com/attachments/709536226184527963/1052370083659391016/eula_mcd.jpg',),
+      home:  NavPage(),
     );
   }
 }

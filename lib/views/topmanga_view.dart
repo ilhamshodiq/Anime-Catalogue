@@ -22,7 +22,11 @@ class _TopMangaState extends State<TopManga> {
     getTopManga().then((value) {
       data = value;
       isLoading = false;
-      setState(() {});
+      if (mounted) { // Periksa apakah widget masih ada
+        data = value;
+        isLoading = false;
+        setState(() {});
+      }
     });
   }
 

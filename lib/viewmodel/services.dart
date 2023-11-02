@@ -14,6 +14,7 @@ final String dataUrlMangaDariId = 'https://api.jikan.moe/v4/manga/';
 Future<List<TopAnimeData>> getTopAnime() async {
   Response response = await Dio().get(dataUrlAnime);
   final dataModel = ModelAnime.fromJson(response.data as Map<String, dynamic>);
+  print(dataModel.data);
   return dataModel.data;
 }
 
@@ -21,6 +22,7 @@ Future<List<TopAnimeData>> getTopAnime() async {
 Future<List<TopMangaData>> getTopManga() async {
   Response response = await Dio().get(dataUrlManga);
   final dataModel = ModelManga.fromJson(response.data as Map<String, dynamic>);
+  print(dataModel.data);
   return dataModel.data;
 }
 

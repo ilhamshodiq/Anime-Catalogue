@@ -21,7 +21,11 @@ class _TopAnimeState extends State<TopAnime> {
     getTopAnime().then((value) {
       data = value;
       isLoading = false;
-      setState(() {});
+      if (mounted) { // Periksa apakah widget masih ada
+        data = value;
+        isLoading = false;
+        setState(() {});
+      }
     });
   }
 
