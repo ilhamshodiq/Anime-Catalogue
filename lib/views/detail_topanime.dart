@@ -1,10 +1,12 @@
-import 'package:flutter/material.dart';
+import 'package:anime_catalogue/models/db.dart';
 import 'package:anime_catalogue/models/model_animedetail.dart';
 import 'package:anime_catalogue/viewmodel/services.dart';
+import 'package:flutter/material.dart';
 
 class DetailTopAnimeScreenPage extends StatefulWidget {
   //key untuk anime by id
   final String id;
+
   const DetailTopAnimeScreenPage({super.key, required this.id});
 
   @override
@@ -13,6 +15,9 @@ class DetailTopAnimeScreenPage extends StatefulWidget {
 }
 
 class _DetailTopAnimeScreenPageState extends State<DetailTopAnimeScreenPage> {
+  final DatabaseHelper databaseHelper = DatabaseHelper();
+
+  bool? isFavorite;
   AnimeDetailData? data;
   bool isLoading = false;
 
@@ -29,16 +34,30 @@ class _DetailTopAnimeScreenPageState extends State<DetailTopAnimeScreenPage> {
 
   @override
   Widget build(BuildContext context) {
-    return isLoading
-        ? const CircularProgressIndicator()
-        : Scaffold(
-            extendBodyBehindAppBar: true,
-            appBar: AppBar(
-              elevation: 0,
-              backgroundColor: Colors.transparent,
-              title: Text(data!.title),
-            ),
-            body: ListView(
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        title: FutureBuilder<AnimeDetailData?>(
+          future: getAnimeById(widget.id),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Text("Error: ${snapshot.error}");
+            } else {
+              if (snapshot.hasData && snapshot.data != null) {
+                AnimeDetailData data = snapshot.data!;
+                return Text(data.title);
+              } else {
+                return Text("...");
+              }
+            }
+          },
+        ),
+      ),
+      body: isLoading
+          ? Center(child: const CircularProgressIndicator())
+          : ListView(
               padding: const EdgeInsets.only(top: 0),
               children: <Widget>[
                 Image.network(
@@ -54,12 +73,61 @@ class _DetailTopAnimeScreenPageState extends State<DetailTopAnimeScreenPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              padding: const EdgeInsets.only(bottom: 2),
-                              child: Text(
-                                data!.title,                                                                
-                                style: const TextStyle(fontSize: 28),
-                              ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    data!.title,
+                                    style: const TextStyle(fontSize: 28),
+                                  ),
+                                ),
+                                IconButton(
+                                  icon: FutureBuilder<bool?>(
+                                    future: databaseHelper
+                                        .checkDuplicate(data!.malId),
+                                    builder: (BuildContext context,
+                                        AsyncSnapshot<bool?> snapshot) {
+                                      final isFavorite = snapshot.data;
+                                      return Icon(
+                                        isFavorite == true
+                                            ? Icons.favorite
+                                            : Icons.favorite_border,
+                                        color: Colors.red,
+                                      );
+                                    },
+                                  ),
+                                  onPressed: () {
+                                    databaseHelper
+                                        .checkDuplicate(data!.malId)
+                                        .then((isFavorite) {
+                                      if (isFavorite == true) {
+                                        databaseHelper
+                                            .deleteBookmark(Bookmark(
+                                          malid: data!.malId,
+                                          title: data!.title,
+                                          img:  data!.images,
+                                          type: data!.type,
+                                        ));
+                                        setState(() {
+                                          isFavorite = false;
+                                        });
+                                      } else {
+                                        databaseHelper
+                                            .insertBookmark(Bookmark(
+                                          malid: data!.malId,
+                                          title: data!.title,
+                                          img: data!.images,
+                                          type: data!.type,
+                                        ));
+                                        setState(() {
+                                          isFavorite = true;
+                                        });
+                                      }
+                                    });
+                                  },
+                                ),
+                              ],
                             ),
                             Text(
                               data!.titleJapanese,
@@ -158,6 +226,6 @@ class _DetailTopAnimeScreenPageState extends State<DetailTopAnimeScreenPage> {
                 ),
               ],
             ),
-          );
+    );
   }
 }

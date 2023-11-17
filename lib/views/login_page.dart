@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:anime_catalogue/models/model_user.dart';
-import 'package:anime_catalogue/views/homescreen.dart';
+import 'package:anime_catalogue/views/contents.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => HomeScreenPage(
+                    builder: (context) => ContentPage(
                           name: response.data[i]['name'],
                           email: response.data[i]['email'],
                           image: response.data[i]['image'],

@@ -1,3 +1,5 @@
+import 'package:anime_catalogue/services/notif.dart';
+import 'package:anime_catalogue/views/settings.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -61,8 +63,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 SizedBox(
                   width: 10,
                 ),
-                Text("Account"
-                    ""),
+                Text("Account"),
               ],
             ),
           ),
@@ -72,15 +73,23 @@ class _ProfilePageState extends State<ProfilePage> {
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black12),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
-                Icon(Icons.settings),
-                SizedBox(
-                  width: 10,
-                ),
-                Text("Settings"),
-              ],
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SettingsPage()));
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: const [
+                  Icon(Icons.settings),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text("Settings"),
+                ],
+              ),
             ),
           ),
           Container(
@@ -109,7 +118,10 @@ class _ProfilePageState extends State<ProfilePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: const [
-                Icon(Icons.logout, color: Colors.red,),
+                Icon(
+                  Icons.logout,
+                  color: Colors.red,
+                ),
                 SizedBox(
                   width: 10,
                 ),
@@ -117,6 +129,34 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             ),
           ),
+          // Container(
+          //   height: 60,
+          //   padding: const EdgeInsets.only(left: 18, right: 18),
+          //   decoration: BoxDecoration(
+          //     border: Border.all(color: Colors.black12),
+          //   ),
+          //   child: InkWell(
+          //     onTap: () {
+          //     NotificationService().showSimpleNotification(
+          //       title: 'Test',
+          //       body: 'wwww', payload: 'test',
+          //     );
+          //     },
+          //     child: Row(
+          //       mainAxisAlignment: MainAxisAlignment.start,
+          //       children: const [
+          //         Icon(
+          //           Icons.alarm,
+          //           color: Colors.yellow,
+          //         ),
+          //         SizedBox(
+          //           width: 10,
+          //         ),
+          //         Text("test motif"),
+          //       ],
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );

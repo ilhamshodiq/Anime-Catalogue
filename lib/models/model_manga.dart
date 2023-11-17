@@ -40,7 +40,7 @@ class TopMangaData {
     required this.synopsis,
   });
 
-  final int malId;
+  final String malId;
   final String url;
   final String images;
   final String title;
@@ -55,7 +55,7 @@ class TopMangaData {
   final String synopsis;
 
   factory TopMangaData.fromJson(Map<String, dynamic> json) => TopMangaData(
-        malId: json["mal_id"],
+        malId: json["mal_id"].toString(),
         url: json["url"],
         images: json["images"]["jpg"]["image_url"],
         title: json["title"],
